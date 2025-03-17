@@ -9,7 +9,7 @@ interface WeekCalendarProps {
   firstDayOfWeek?: 0 | 1 // 0 for Sunday, 1 for Monday
 }
 
-interface CalendarEvent {
+export interface CalendarEvent {
   id: string
   title: string
   day: number // 0-6 (0 = Sunday, 1 = Monday, etc.)
@@ -18,7 +18,7 @@ interface CalendarEvent {
   color?: 'blue' | 'green' | 'orange' // Optional color theme
 }
 
-const WeekCalendar: FC<WeekCalendarProps> = ({
+export const WeekCalendar: FC<WeekCalendarProps> = ({
   startTime,
   endTime,
   events,
@@ -179,5 +179,3 @@ const WeekCalendar: FC<WeekCalendarProps> = ({
     </div>
   )
 }
-
-export default WeekCalendar

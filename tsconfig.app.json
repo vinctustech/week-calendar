@@ -28,10 +28,6 @@
     "baseUrl": ".",
     "paths": {
       "src/*": ["src/*"],
-      "@turf/helpers": ["node_modules/@turf/helpers/dist/js/index.d.ts"],
-      "@turf/difference": ["node_modules/@turf/difference/index.d.ts"],
-      "@turf/intersect": ["node_modules/@turf/intersect/dist/js/index.d.ts"],
-      "@turf/bbox": ["node_modules/@turf/bbox/dist/js/index.d.ts"]
     }
   },
   "include": ["src"]
