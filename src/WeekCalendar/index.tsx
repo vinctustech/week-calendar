@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react'
+import { FC, useMemo, CSSProperties } from 'react'
 import './styles.scss'
 
 // Types for the component
@@ -57,6 +57,8 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
     return labels
   }, [startHour, startMinute, endHour, endMinute])
 
+  const totalSlots = timeLabels.length
+
   // Generate days of week
   const daysOfWeek = useMemo(() => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -80,7 +82,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
   }
 
   // Helper to calculate position and size for an event
-  const calculateEventStyle = (event: CalendarEvent): React.CSSProperties => {
+  const calculateEventStyle = (event: CalendarEvent): CSSProperties => {
     const startSlot = getSlotIndex(event.startTime)
     const endSlot = getSlotIndex(event.endTime)
     const duration = endSlot - startSlot
@@ -111,7 +113,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
           const isHour = time.minute === 0
           const lineClass = isHour ? 'grid-line hour-line' : 'grid-line quarter-line'
 
-          return (
+          return index === 0 ? null : (
             <div
               key={`line-${time.label}`}
               className={lineClass}
@@ -137,7 +139,12 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
 
       <div className="calendar-body">
         {/* Time labels on the left */}
-        <div className="time-labels">
+        <div
+          className="time-labels"
+          style={{
+            gridTemplateRows: `repeat(${totalSlots}, 15px)`,
+          }}
+        >
           {hourlyTimeLabels.map((time, index) => (
             <div
               key={`time-${time.label}`}
@@ -154,7 +161,11 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
 
         {/* Day columns */}
         {daysOfWeek.map((day, dayIndex) => (
-          <div key={`day-${day}`} className="day-column">
+          <div
+            key={`day-${day}`}
+            className="day-column"
+            style={{ gridTemplateRows: `repeat(${totalSlots}, 15px)` }}
+          >
             {/* Grid lines */}
             {renderGridLines()}
 
