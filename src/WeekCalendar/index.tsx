@@ -40,7 +40,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
     let currentHour = startHour
     let currentMinute = startMinute - (startMinute % 15) // Round to nearest 15 minutes
 
-    while (currentHour < endHour || (currentHour === endHour && currentMinute <= endMinute)) {
+    while (currentHour < endHour || (currentHour === endHour && currentMinute < endMinute)) {
       labels.push({
         hour: currentHour,
         minute: currentMinute,
