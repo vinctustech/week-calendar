@@ -26,7 +26,7 @@ $box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
   .day-headers {
     display: grid;
-    grid-template-columns: $time-column-width 1fr 1fr;
+    grid-template-columns: $time-column-width 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     background-color: $header-bg-color;
 
     .day-header {
@@ -43,13 +43,13 @@ $box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
   .calendar-body {
     display: grid;
-    grid-template-columns: $time-column-width 1fr 1fr;
+    grid-template-columns: $time-column-width 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     border-top: 1px solid $border-color;
 
     .time-labels {
       grid-column: 1;
       display: grid;
-      grid-template-rows: repeat(12, $time-slot-height);
+      grid-template-rows: repeat(36, $time-slot-height);
       border-right: 1px solid $border-color;
       background-color: $time-labels-bg-color;
 
