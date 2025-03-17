@@ -22,7 +22,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
   startTime,
   endTime,
   events,
-  firstDayOfWeek = 1, // Default to Monday
+  firstDayOfWeek = 0,
 }) => {
   // Parse start and end times
   const startHour = parseInt(startTime.split(':')[0], 10)
