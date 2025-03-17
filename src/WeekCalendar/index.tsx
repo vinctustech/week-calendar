@@ -10,7 +10,7 @@ interface WeekCalendarProps {
 }
 
 export interface CalendarEvent {
-  id: string
+  id: string | number
   title: string
   day: number // 0-6 (0 = Sunday, 1 = Monday, etc.)
   startTime: string // Format: "HH:MM"
@@ -168,7 +168,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
               .filter((event) => getAdjustedDayIndex(event.day) === dayIndex)
               .map((event) => (
                 <div
-                  key={event.id}
+                  key={String(event.id)}
                   className={`event ${event.color ? `event-${event.color}` : 'event-blue'}`}
                   style={calculateEventStyle(event)}
                 >

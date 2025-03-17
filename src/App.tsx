@@ -11,7 +11,7 @@ const App: FC = () => {
     <Card>
       <DatePicker picker="week" value={value} onChange={setValue} style={{ marginBottom: 10 }} />
       <div>
-        <WeekCalendar startHour={9} endHour={17} events={events} />
+        <WeekCalendar startHour={8} endHour={16} events={events} />
       </div>
     </Card>
   )
@@ -19,41 +19,73 @@ const App: FC = () => {
 
 const events: CalendarEvent[] = [
   {
-    id: '1',
-    title: 'Morning Team Sync',
-    day: 1, // Monday
-    startTime: '09:05',
-    endTime: '10:00',
+    id: 1,
+    title: 'Morning Standup',
+    day: 1,
+    startTime: '08:00',
+    endTime: '08:45',
     color: 'blue',
   },
   {
-    id: '2',
+    id: 2,
+    title: 'Morning Standup',
+    day: 2,
+    startTime: '08:00',
+    endTime: '08:45',
+    color: 'blue',
+  },
+  {
+    id: 3,
+    title: 'Morning Standup',
+    day: 3,
+    startTime: '08:00',
+    endTime: '08:45',
+    color: 'blue',
+  },
+  {
+    id: 4,
+    title: 'Morning Standup',
+    day: 4,
+    startTime: '08:00',
+    endTime: '08:45',
+    color: 'blue',
+  },
+  {
+    id: 5,
+    title: 'Morning Standup',
+    day: 5,
+    startTime: '08:00',
+    endTime: '08:45',
+    color: 'blue',
+  },
+  {
+    id: 6,
     title: 'Client Call',
-    day: 1, // Monday
-    startTime: '10:35',
-    endTime: '11:00',
+    day: 1,
+    startTime: '10:30',
+    endTime: '11:15',
     color: 'green',
   },
   {
-    id: '3',
+    id: 7,
     title: 'Product Discussion',
-    day: 2, // Tuesday
+    day: 2,
     startTime: '09:15',
     endTime: '10:30',
     color: 'orange',
   },
   {
-    id: '4',
+    id: 8,
     title: 'Weekly Planning',
-    day: 3, // Wednesday
-    startTime: '13:00',
-    endTime: '14:30',
-    color: 'blue',
+    day: 1,
+    startTime: '09:00',
+    endTime: '10:00',
+    color: 'orange',
   },
   {
-    id: '5',
+    id: 9,
     title: 'Lunch with Team',
-    day: 5, // Friday
+    day: 5,
     startTime: '12:00',
     endTime: '13:00',
     color: 'green',
