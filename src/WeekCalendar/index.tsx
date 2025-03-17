@@ -3,8 +3,8 @@ import './styles.scss'
 
 // Types for the component
 interface WeekCalendarProps {
-  startTime: string // Format: "HH:MM" (24-hour)
-  endTime: string // Format: "HH:MM" (24-hour)
+  startHour: number // Integer hour (24-hour format)
+  endHour: number // Integer hour (24-hour format)
   events: CalendarEvent[]
   firstDayOfWeek?: 0 | 1 // 0 for Sunday, 1 for Monday
 }
@@ -19,17 +19,11 @@ export interface CalendarEvent {
 }
 
 export const WeekCalendar: FC<WeekCalendarProps> = ({
-  startTime,
-  endTime,
+  startHour,
+  endHour,
   events,
   firstDayOfWeek = 0,
 }) => {
-  // Parse start and end times
-  const startHour = parseInt(startTime.split(':')[0], 10)
-  const startMinute = parseInt(startTime.split(':')[1], 10)
-  const endHour = parseInt(endTime.split(':')[0], 10)
-  const endMinute = parseInt(endTime.split(':')[1], 10)
-
   // Calculate total minutes and slots
   // const totalMinutes = (endHour - startHour) * 60 + (endMinute - startMinute)
   // const totalSlots = Math.ceil(totalMinutes / 15)
@@ -38,9 +32,9 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
   const timeLabels = useMemo(() => {
     const labels = []
     let currentHour = startHour
-    let currentMinute = startMinute - (startMinute % 15) // Round to nearest 15 minutes
+    let currentMinute = 0 // Start at the beginning of the hour
 
-    while (currentHour < endHour || (currentHour === endHour && currentMinute < endMinute)) {
+    while (currentHour < endHour) {
       labels.push({
         hour: currentHour,
         minute: currentMinute,
@@ -55,7 +49,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
     }
 
     return labels
-  }, [startHour, startMinute, endHour, endMinute])
+  }, [startHour, endHour])
 
   const totalSlots = timeLabels.length
 
@@ -77,7 +71,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
   // Helper function to calculate slot index for a given time
   const getSlotIndex = (timeString: string): number => {
     const [hour, minute] = timeString.split(':').map(Number)
-    const minutesFromStart = (hour - startHour) * 60 + (minute - startMinute)
+    const minutesFromStart = (hour - startHour) * 60 + minute
     return Math.floor(minutesFromStart / 15)
   }
 
