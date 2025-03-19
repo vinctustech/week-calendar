@@ -2,12 +2,13 @@ import { FC, useMemo, CSSProperties } from 'react'
 import './styles.scss'
 
 // Types for the component
-interface WeekCalendarProps {
+interface WeekCalendarProps<T extends CalendarEvent = CalendarEvent> {
   startHour: number // Integer hour (24-hour format)
   endHour: number // Integer hour (24-hour format)
-  events: CalendarEvent[]
+  events: T[]
   firstDayOfWeek?: 0 | 1 // 0 for Sunday, 1 for Monday
   height?: string | number
+  onEventClick?: (event: T) => void // Event handler with proper typing
 }
 
 export interface CalendarEvent {
@@ -19,13 +20,14 @@ export interface CalendarEvent {
   color?: 'blue' | 'green' | 'orange' // Optional color theme
 }
 
-export const WeekCalendar: FC<WeekCalendarProps> = ({
+export const WeekCalendar = <T extends CalendarEvent = CalendarEvent>({
   startHour,
   endHour,
   events,
   firstDayOfWeek = 0,
   height = '100%',
-}) => {
+  onEventClick,
+}: WeekCalendarProps<T>) => {
   // Calculate total minutes and slots
   // const totalMinutes = (endHour - startHour) * 60 + (endMinute - startMinute)
   // const totalSlots = Math.ceil(totalMinutes / 15)
@@ -173,6 +175,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
                   key={String(event.id)}
                   className={`event ${event.color ? `event-${event.color}` : 'event-blue'}`}
                   style={calculateEventStyle(event)}
+                  onClick={() => onEventClick?.(event)}
                 >
                   <div className="event-title">{event.title}</div>
                   <div className="event-time">
