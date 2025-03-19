@@ -7,6 +7,7 @@ interface WeekCalendarProps {
   endHour: number // Integer hour (24-hour format)
   events: CalendarEvent[]
   firstDayOfWeek?: 0 | 1 // 0 for Sunday, 1 for Monday
+  height?: string | number
 }
 
 export interface CalendarEvent {
@@ -23,6 +24,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
   endHour,
   events,
   firstDayOfWeek = 0,
+  height = '100%',
 }) => {
   // Calculate total minutes and slots
   // const totalMinutes = (endHour - startHour) * 60 + (endMinute - startMinute)
@@ -120,7 +122,7 @@ export const WeekCalendar: FC<WeekCalendarProps> = ({
   }
 
   return (
-    <div className="week-calendar">
+    <div className="week-calendar" style={{ height: height }}>
       {/* Day headers */}
       <div className="day-headers">
         <div className="day-header"></div> {/* Empty cell for time labels */}
