@@ -1,4 +1,4 @@
-import { FC, useMemo, CSSProperties } from 'react'
+import { useMemo, CSSProperties } from 'react'
 import './styles.scss'
 
 // Types for the component
