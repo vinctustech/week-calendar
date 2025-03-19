@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { Card, DatePicker } from 'antd'
 import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
-import { CalendarEvent, WeekCalendar } from 'src/WeekCalendar'
+import { WeekCalendarEvent, WeekCalendar } from 'src/WeekCalendar'
 
 const App: FC = () => {
   const [value, setValue] = useState<Dayjs>(dayjs())
@@ -22,7 +22,7 @@ const App: FC = () => {
   )
 }
 
-const events: CalendarEvent[] = [
+const events: WeekCalendarEvent[] = [
   {
     id: 1,
     title: 'Morning Standup',

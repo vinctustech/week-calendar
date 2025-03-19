@@ -2,7 +2,7 @@ import { useMemo, CSSProperties } from 'react'
 import './styles.scss'
 
 // Types for the component
-interface WeekCalendarProps<T extends CalendarEvent = CalendarEvent> {
+interface WeekCalendarProps<T extends WeekCalendarEvent = WeekCalendarEvent> {
   startHour: number // Integer hour (24-hour format)
   endHour: number // Integer hour (24-hour format)
   events: T[]
@@ -11,7 +11,7 @@ interface WeekCalendarProps<T extends CalendarEvent = CalendarEvent> {
   onEventClick?: (event: T) => void // Event handler with proper typing
 }
 
-export interface CalendarEvent {
+export interface WeekCalendarEvent {
   id: string | number
   title: string
   day: number // 0-6 (0 = Sunday, 1 = Monday, etc.)
@@ -20,7 +20,7 @@ export interface CalendarEvent {
   color?: 'blue' | 'green' | 'orange' // Optional color theme
 }
 
-export const WeekCalendar = <T extends CalendarEvent = CalendarEvent>({
+export const WeekCalendar = <T extends WeekCalendarEvent = WeekCalendarEvent>({
   startHour,
   endHour,
   events,
@@ -80,7 +80,7 @@ export const WeekCalendar = <T extends CalendarEvent = CalendarEvent>({
   }
 
   // Helper to calculate position and size for an event
-  const calculateEventStyle = (event: CalendarEvent): CSSProperties => {
+  const calculateEventStyle = (event: WeekCalendarEvent): CSSProperties => {
     const startSlot = getSlotIndex(event.startTime)
     const endSlot = getSlotIndex(event.endTime)
     const duration = endSlot - startSlot
