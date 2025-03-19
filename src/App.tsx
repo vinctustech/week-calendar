@@ -11,7 +11,7 @@ const App: FC = () => {
     <Card>
       <DatePicker picker="week" value={value} onChange={setValue} style={{ marginBottom: 10 }} />
       <div style={{ height: 'calc(100vh - 90px)' }}>
-        <WeekCalendar startHour={8} endHour={23} events={events} />
+        <WeekCalendar startHour={0} endHour={24} events={events} />
       </div>
     </Card>
   )
